@@ -67,7 +67,10 @@ server.on('listening', onListening);
 
 mongoose.connect(process.env.MONGODB_URL, (err) => {
   if (!err) {
-    server.listen(port);
+    console.log('database connection successful');
+    server.listen(port, (err) => {
+      if (!err) console.log('server started'); 
+    });
   }
 });
 
