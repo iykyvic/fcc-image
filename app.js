@@ -1,12 +1,16 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const favicon = require('serve-favicon');
+const path = require('path');
 const home = require('./routes/home');
 const search = require('./routes/search');
 const searches = require('./routes/searches');
 
 const app = express();
 
+app.use(favicon(path.join(__dirname, 'public', '/images/favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
